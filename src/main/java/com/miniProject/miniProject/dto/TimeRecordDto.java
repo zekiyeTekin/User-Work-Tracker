@@ -1,5 +1,6 @@
 package com.miniProject.miniProject.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ public class TimeRecordDto {
 
     private Integer id;
     private Integer time;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
     private AssignmentDto assignment;
 

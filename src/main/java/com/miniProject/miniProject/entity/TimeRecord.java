@@ -16,7 +16,7 @@ public class TimeRecord {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private Integer time;
-   // @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd-MM-yyyy")
     private LocalDate date;
 
     @OneToOne

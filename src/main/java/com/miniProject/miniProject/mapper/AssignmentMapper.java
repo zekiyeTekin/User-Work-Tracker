@@ -1,6 +1,7 @@
 package com.miniProject.miniProject.mapper;
 
 import com.miniProject.miniProject.dto.AssignmentDto;
+import com.miniProject.miniProject.dto.UserDto;
 import com.miniProject.miniProject.entity.Assignment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,8 +18,10 @@ public class AssignmentMapper {
     @Autowired
     ProjectMapper projectMapper;
 
-   /*
     UserMapper userMapper = new UserMapper();
+
+
+/*
     public AssignmentDto toDto(Assignment assignment){
 
         return new AssignmentDto.Builder()
@@ -45,6 +48,14 @@ public class AssignmentMapper {
                 .build();
     }
 
+    public AssignmentDto toDtoWithUser(Assignment assignment){
+        return new AssignmentDto.Builder()
+                .id(assignment.getId())
+                .project(projectMapper.toDto(assignment.getProject()))
+                .user(userMapper.toDtoWithUser(assignment.getUser()))
+                .build();
+    }
+
     public List<AssignmentDto> convertListWithoutUser(List<Assignment> assignmentList){
         List<AssignmentDto> assignmentDtoList = new ArrayList<>();
 
@@ -54,8 +65,17 @@ public class AssignmentMapper {
         return assignmentDtoList;
     }
 
+    public List<AssignmentDto> convertListWithUser(List<Assignment> assignmentList){
+        List<AssignmentDto> assignmentDtoList = new ArrayList<>();
+
+        for(Assignment assignment : assignmentList){
+            assignmentDtoList.add(toDtoWithUser(assignment));
+        }
+        return assignmentDtoList;
+    }
+
     public Page<AssignmentDto> mapPage(Page<Assignment> assignmentPage){
-        return new PageImpl<>(convertListWithoutUser(assignmentPage.getContent()), assignmentPage.getPageable(), assignmentPage.getTotalElements());
+        return new PageImpl<>(convertListWithUser(assignmentPage.getContent()), assignmentPage.getPageable(), assignmentPage.getTotalElements());
     }
 
 

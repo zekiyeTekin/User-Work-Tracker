@@ -5,6 +5,7 @@ import com.miniProject.miniProject.entity.TimeRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ public class TimeRecordMapper {
                 .id(timeRecord.getId())
                 .date(timeRecord.getDate())
                 .time(timeRecord.getTime())
-                .assignment(assignmentMapper.toDtoWithoutUser(timeRecord.getAssignment()))
+                .assignment(assignmentMapper.toDtoWithUser(timeRecord.getAssignment()))
                 .build();
 
     }
@@ -39,6 +40,7 @@ public class TimeRecordMapper {
     public Page<TimeRecordDto> mapPage(Page<TimeRecord> timeRecords){
         return new PageImpl<>(convertList(timeRecords.getContent()),timeRecords.getPageable(), timeRecords.getTotalElements());
     }
+
 
 
 }

@@ -14,5 +14,9 @@ public class TimeRecordFilter {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
+    private String projectName;
+    private String userName;
+    private String supervisorName;
+    private Integer time;
     private String assignment;
 }

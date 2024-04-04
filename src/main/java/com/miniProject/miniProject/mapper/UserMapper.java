@@ -29,6 +29,15 @@ public class UserMapper {
                 .build();
     }
 
+    public UserDto toDtoWithUser(User user){
+        return new UserDto.Builder()
+                .id(user.getId())
+                .name(user.getName())
+                .surname(user.getSurname())
+               // .assignmentDtoList(assignmentMapper.convertListWithUser(user.getAssignmentList()))
+                .build();
+    }
+
     public UserDto toDtoWithoutAssignmentList(User user){
 
         return new UserDto.Builder()
@@ -48,5 +57,14 @@ public class UserMapper {
 
     public Page<UserDto> mapPage(Page<User> userPage){
         return new PageImpl<>(convertList(userPage.getContent()),userPage.getPageable(), userPage.getTotalElements());
+    }
+
+    public User toEntity(UserDto userDto){
+        User user = new User();
+        user.setSurname(userDto.getSurname());
+        user.setName(userDto.getName());
+        user.setId(userDto.getId());
+        //user.setAssignmentList(assignmentMapper.toEntity(userDto.getAssignmentDtoList()));
+        return user;
     }
 }
