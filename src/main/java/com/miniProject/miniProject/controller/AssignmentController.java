@@ -18,6 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/assignment")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@CrossOrigin(origins = "*", maxAge=3600)
 public class AssignmentController {
 
     //@Autowired

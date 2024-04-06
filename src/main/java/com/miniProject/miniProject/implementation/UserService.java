@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface UserService {
+
+   ResponseEntity<List<UserDto>> getAllUsers();
    ResponseEntity< Page<UserDto>> getAllUsersWithPagination(Pageable pageable);
    ResponseEntity<List<UserDto>> getUserBySearchName(UserFilter userFilter);
 

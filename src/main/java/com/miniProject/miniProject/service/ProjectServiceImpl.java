@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,9 +30,9 @@ public class ProjectServiceImpl implements ProjectService {
    // @Autowired
    private final ProjectMapper projectMapper;
 
-    /*
 
-    public ResponseEntity<List<ProjectDto>> getAllProjects(int pageNumber, int pageSize){
+
+    public ResponseEntity<List<ProjectDto>> getAllProjects(){
 
         try{
             return new ResponseEntity<>(projectMapper.convertList(projectRepository.findAll()), HttpStatus.OK);
@@ -40,7 +41,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
-     */
+
     @Override
     public ResponseEntity<Page<ProjectDto>> getProjectListWithPagination(Pageable pageable) {
 

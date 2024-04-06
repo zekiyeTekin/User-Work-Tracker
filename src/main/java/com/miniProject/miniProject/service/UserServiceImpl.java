@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-    /*
+
     //Bu pagination yapmadan önceki tüm userlerı getiren fonksiyonum
     public ResponseEntity<List<UserDto>> getAllUsers(){
 
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
         }
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
-     */
+
 
     public ResponseEntity<Page<UserDto>> getAllUsersWithPagination(Pageable pageable){
         Page<UserDto> userPage = userMapper.mapPage(userRepository.findAll(pageable));

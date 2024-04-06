@@ -12,6 +12,8 @@ import java.util.List;
 
 
 public interface ProjectService {
+
+     ResponseEntity<List<ProjectDto>> getAllProjects();
      ResponseEntity<Page<ProjectDto>> getProjectListWithPagination(Pageable pageable);
      ResponseEntity<ProjectDto> getProjectById(Integer id);
 

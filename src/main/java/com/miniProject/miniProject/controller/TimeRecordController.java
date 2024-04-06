@@ -24,6 +24,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/record")
+@CrossOrigin(origins = "*", maxAge=3600)
 public class TimeRecordController {
 
     @Autowired

@@ -16,17 +16,19 @@ import java.util.List;
 @Controller
 @RequestMapping("/project")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+// fetch işlemi yapıldığında oluşan hatayı engellemek için, güvenli bir yerden geldiğini belirtmek için
+@CrossOrigin(origins = "*", maxAge=3600)
 public class ProjectController {
 
 
     private final ProjectService projectService;
 
-  /*
+
     @GetMapping("getAllProjects")
     public ResponseEntity<List<ProjectDto>> getAllProjects(){
       return projectService.getAllProjects();
     }
-   */
+
 
     //http://localhost:8081/project/allProjects?pageNumber=1&pageSize=4
     //SOR RESPONSE ENTİTY OLMADAN ÇALIŞMIYOR NEDENNN?

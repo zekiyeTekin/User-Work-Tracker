@@ -15,20 +15,21 @@ import java.util.List;
 
 @Controller
 @RequestMapping("user")
+@CrossOrigin(origins = "*", maxAge=3600)
 public class UserController {
 
     @Autowired
     UserServiceImpl userService;
 
 
-   /*
+
     @GetMapping("getUsers")
     public ResponseEntity<List<UserDto>> getAllUsers() {
         return userService.getAllUsers();
     }
-    */
 
-    @GetMapping("/getUsers")
+
+    @GetMapping("/getUsersWithPaging")
     public ResponseEntity<Page<UserDto>> getAllUsersWithPagination(Pageable pageable){
         return userService.getAllUsersWithPagination(pageable);
     }
